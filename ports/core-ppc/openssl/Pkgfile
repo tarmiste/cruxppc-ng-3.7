@@ -1,0 +1,37 @@
+# Description: Secure Sockets Layer and Transport Layer Security tools
+# URL: https://www.openssl.org/
+# Maintainer:  cruxppc at gmail dot com
+
+name=openssl
+version=1.1.1m
+release=1
+source=(https://www.openssl.org/source/$name-$version.tar.gz \
+	mksslcert.sh)
+
+build() {
+	cd $name-$version
+	export MAKEFLAGS="$MAKEFLAGS -j1"
+
+	#./config \
+	#	--prefix=/usr \
+	#	--libdir=lib \
+	#	--openssldir=/etc/ssl \
+	#	shared \
+	#	enable-ec_nistp_64_gcc_128
+	./Configure linux-ppc`echo $HOSTTYPE|sed 's|[a-z]*||'` --prefix=/usr \
+		--libdir=lib --openssldir=/etc/ssl shared
+
+	sed -i "s|-O3|$CFLAGS|" Makefile
+
+	#make depend
+	make
+
+# Note Running the test requires an additional perl module which can be added with:
+# cpan -i Test::Builder::TodoDiag
+	# make -j1 test
+
+	make MANSUFFIX=ssl DESTDIR=$PKG install_sw install_ssldirs install_man_docs
+
+	find $PKG -name "*fips*" -delete
+	install -D -m 755 $SRC/mksslcert.sh $PKG/usr/bin/mksslcert
+}
