@@ -1,0 +1,6 @@
+untrusted comment: verify with /etc/ports/core.pub
+RWRJc1FUaeVeqm9Q41h/CfKfOEVHa+iX5BGKZk+W4hupEPRmiAjHgbmR2Ic+Trk7ug0FcoDy2r4pSn8eBLuLpJV7bCQyluddsQI=
+SHA256 (Pkgfile) = eb2f8d876ab3c475d318f17d5e5fe2aaba8dea9e7db6277a5bf0869af120f401
+SHA256 (.footprint) = c3bf3cdddb84aefc9632031b3c68aee20d3948478dad8ada0183920d30c6483b
+SHA256 (binutils-2.37.tar.xz) = 820d9724f020a3e69cb337893a0b63c2db161dadcb0e06fc11dc29eb1e84a32c
+SHA256 (CVE-2021-45078.patch) = 7a64982ce1df6dae3aea8f0aaf286ff914027bb54680c00478a2ce5d09233b1d
