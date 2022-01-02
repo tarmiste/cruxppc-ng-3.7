@@ -10,13 +10,12 @@ source=(http://ftpmirror.gnu.org/gnu/$name/$name-$version.tar.xz)
 build() {
     cd $name-$version
 
-    ./configure --prefix=/usr --disable-nls
     case $(uname -m) in
-	ppc)
-            TIME_T_32_BIT_OK=yes ./configure --prefix=/usr --disable-nls
-	;;
-	ppc64)
+	*64)
             ./configure --prefix=/usr --disable-nls
+	;;
+	*)
+            TIME_T_32_BIT_OK=yes ./configure --prefix=/usr --disable-nls
 	;;
     esac
 
