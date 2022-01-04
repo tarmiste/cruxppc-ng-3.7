@@ -1,0 +1,24 @@
+# Description: Enables change of themes, icons, and fonts used by applications easily. 
+# URL: https://wiki.lxde.org/en/LXAppearance
+# Maintainer: cruxppc at gmail dot com
+# Depends on: gtk dbus-glib
+
+name=lxappearance
+version=0.6.3
+release=1
+source=(http://downloads.sourceforge.net/sourceforge/lxde/$name-$version.tar.xz)
+
+build() {
+	cd $name-$version
+
+	export LINGUAS=" "
+
+	./configure --prefix=/usr \
+		--sysconfdir=/etc \
+		--disable-nls \
+		--enable-dbus
+
+	make
+	make DESTDIR=$PKG install
+	#rm -fr $PKG/usr/share/locale
+}

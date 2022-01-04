@@ -1,0 +1,14 @@
+diff -Naur a/mysys/CMakeLists.txt b/mysys/CMakeLists.txt
+--- a/mysys/CMakeLists.txt	2021-11-05 20:03:30.000000000 +0000
++++ b/mysys/CMakeLists.txt	2021-11-21 18:06:05.443289947 +0000
+@@ -186,6 +186,10 @@
+   TARGET_LINK_LIBRARIES(mysys pthread)
+ ENDIF()
+ 
++IF(CMAKE_SYSTEM_PROCESSOR MATCHES "ppc")
++  TARGET_LINK_LIBRARIES(mysys atomic)
++ENDIF()
++
+ ADD_EXECUTABLE(thr_lock thr_lock.c)
+ TARGET_LINK_LIBRARIES(thr_lock mysys)
+ SET_TARGET_PROPERTIES(thr_lock PROPERTIES COMPILE_FLAGS "-DMAIN")
