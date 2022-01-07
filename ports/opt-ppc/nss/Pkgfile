@@ -26,6 +26,10 @@ build() {
 	export NSS_DISABLE_GTESTS=1
 	case $(uname -m) in
 		ppc64) export USE_64=1 ;;
+		ppc) 
+			export NSS_DISABLE_ALTIVEC=1
+			export NSS_DISABLE_CRYPTO_VSX=1
+		;;
 	esac
 
 	make -C nss
