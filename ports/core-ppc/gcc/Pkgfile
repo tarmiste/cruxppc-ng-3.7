@@ -35,11 +35,12 @@ build() {
 		--enable-lto \
 		--with-x=no \
 		--disable-multilib \
+		--disable-bootstrap \
 		--enable-plugin \
 		--enable-default-pie \
 		--enable-default-ssp \
 		--enable-secure-plt \
-		--with-pkgversion="CRUX-PPC"
+		--with-pkgversion="CRUX-PPC" \
 		--with-system-zlib \
 		--disable-nls
 	#make bootstrap

@@ -30,7 +30,6 @@ build() {
 		--enable-kernel=3.2 \
 		--enable-add-ons \
 		--enable-stack-protector=strong \
-		--enable-static-pie \
 		--enable-bind-now \
 		--disable-multi-arch \
 		--disable-profile \
